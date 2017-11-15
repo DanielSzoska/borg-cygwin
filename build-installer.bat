@@ -47,14 +47,14 @@ REM --- Copy built packages into release path
 cd %CYGBUILD%
 
 copy bin\borg %CYGPATH%\bin
-for /d %%d in (lib\python3.6\site-packages\borg*) do xcopy /s %%d %CYGPATH%\%%d\
-for /d %%d in (lib\python3.6\site-packages\msgpack*) do xcopy /s %%d %CYGPATH%\%%d\
-for /d %%d in (lib\python3.6\site-packages\pkg_resources) do xcopy /s %%d %CYGPATH%\%%d\
+for /d %%d in (lib\python3.6\site-packages\borg*) do xcopy /s /y %%d %CYGPATH%\%%d\
+for /d %%d in (lib\python3.6\site-packages\msgpack*) do xcopy /s /y %%d %CYGPATH%\%%d\
+for /d %%d in (lib\python3.6\site-packages\pkg_resources) do xcopy /s /y %%d %CYGPATH%\%%d\
 
 REM --- Remove all locales except EN (borg does not use them)
 
 del /s /q %CYGPATH%\usr\share\locale\
-for /d %%d in (usr\share\locale\en*) do xcopy /s %%d %CYGPATH%\%%d\
+for /d %%d in (usr\share\locale\en*) do xcopy /s /y %%d %CYGPATH%\%%d\
 
 REM --- Remove all documentation
 
